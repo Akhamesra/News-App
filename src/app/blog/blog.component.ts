@@ -16,7 +16,7 @@ selectedblog:any="hello";
   ngOnInit(){
     // window.location.reload();
     console.log(this.store.category);
-    this.http.get(`https://newsapi.org/v2/top-headlines?country=in&category=${this.store.category}&apiKey=5a15f82320c54c608c7370e6a1f5af00&limit=4`).subscribe((res) => {
+    this.http.get(`https://newsapi.org/v2/top-headlines?country=in&category=${this.store.category}&apiKey=9fcfc531462f48248f8dc071591f1675&limit=4`).subscribe((res) => {
       if(res != null){
         // this.filter(res)
         // console.log(res.articles.author);
@@ -32,7 +32,7 @@ selectedblog:any="hello";
   console.log(this.news[1].urlToImage);
  }
  check(val:string){
-  this.http.get(`https://newsapi.org/v2/top-headlines?country=in&category=${val}&apiKey=5a15f82320c54c608c7370e6a1f5af00&limit=4`).subscribe((res) => {
+  this.http.get(`https://newsapi.org/v2/top-headlines?country=in&category=${val}&apiKey=9fcfc531462f48248f8dc071591f1675&limit=4`).subscribe((res) => {
     if(res != null){
       this.filter(res);
       console.log(val)
