@@ -7,32 +7,24 @@ import { StoreService } from '../store.service';
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss']
 })
-export class BlogComponent implements OnInit {
-  modal: boolean = true;
-  selected: Array<boolean> = [false, false, false, false, false, false];
-  selectedblog: any = "hello";
-  news: any;
-
-  constructor(public http: HttpClient, public store: StoreService) {}
-
-  ngOnInit() {
+export class BlogComponent {
+  constructor(public http: HttpClient, public store: StoreService){}
+  modal:boolean=true;
+  selected:Array<boolean>=[false,false,false,false,false,false];
+selectedblog:any="hello";
+  news:any;
+  ngOnInit(){
+    // window.location.reload();
     console.log(this.store.category);
-    
-    const apiUrl = `https://newsapi.org/v2/top-headlines?country=in&category=${this.store.category}&apiKey=5a15f82320c54c608c7370e6a1f5af00&limit=4`;
-    
-    this.http.get(apiUrl).subscribe(
-      (res) => {
-        if (res) {
-          this.filter(res);
-        } else {
-          alert("Failed to fetch news");
-        }
-      },
-      (error) => {
-        console.error("Error fetching news:", error);
-        alert("There was an error fetching news. Please check the console for details.");
+    this.http.get(`https://newsapi.org/v2/top-headlines?country=in&category=${this.store.category}&apiKey=5a15f82320c54c608c7370e6a1f5af00&limit=4`).subscribe((res) => {
+      if(res != null){
+        // this.filter(res)
+        // console.log(res.articles.author);
+        this.filter(res);
       }
-    );
+      else
+        alert("failed")
+    })
   }
 
  filter(res:any){
